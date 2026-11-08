@@ -30,7 +30,7 @@ atestado.zip
     └── skill.md
 ```
 
-Use o conteúdo do arquivo correspondente em `skills/` como `skill.md`. O ZIP deve conter a pasta da skill na raiz, e não apenas o arquivo solto. Em seguida, acesse [Customize > Skills](https://claude.ai/customize/skills), escolha **+ Create skill > Upload a skill**, envie cada ZIP e ative as skills na lista. A disponibilidade pode variar conforme o plano e as configurações da organização.
+Use o conteúdo do arquivo correspondente em `skills/` como `skill.md`. O ZIP contém a pasta da skill na raiz, e não apenas o arquivo solto. Em seguida, acesse [Customize > Skills](https://claude.ai/customize/skills), escolha **+ Create skill > Upload a skill**, envie cada MD e ative as skills na lista. A disponibilidade pode variar conforme o plano e as configurações da organização.
 
 Com as skills ativadas, você pode solicitá-las explicitamente no chat usando `/prontuário` para gerar um rascunho de prontuário ou `/atestado` para um rascunho de atestado. Também é possível descrever a tarefa em linguagem natural; Claude pode selecionar uma skill ativada quando considerar que ela se aplica.
 
