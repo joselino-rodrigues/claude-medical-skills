@@ -1,4 +1,4 @@
-[---
+---
 name: atestado
 description: Para uso exclusivo do médico responsável. Gera rascunho de atestado no modelo do médico após confirmar os dados e a decisão clínica. O documento exige revisão e assinatura médica antes do uso. Use quando o médico digitar /atestado seguido dos dados do paciente, ou pedir rascunho de atestado ou declaração de afastamento.
 ---
@@ -154,4 +154,3 @@ Assinatura do médico emitente: ______________________________
 ```
 
 **Conferência:** período 27/03/2026 a 29/03/2026 (3 dias, contagem inclusiva). CID omitido do atestado até o paciente assinalar e assinar a autorização. O atestado é um rascunho e requer revisão e assinatura do médico emitente antes do uso.
-](https://github.com/joselino-rodrigues/claude-medicas-skills)
