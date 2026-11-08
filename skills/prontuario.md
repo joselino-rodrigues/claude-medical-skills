@@ -146,4 +146,3 @@ Orofaringe com hiperemia e placas amigdalianas. Linfonodos cervicais dolorosos �
 | Sugerir medicação como prescrita | Só registre o que o médico decidiu |
 | Perguntar campo a campo | Uma rodada, com as lacunas que mudam conduta |
 | Gerar o prontuário na Etapa 1 | Só gere após a resposta do médico ou o pedido "pode gerar" |
-
