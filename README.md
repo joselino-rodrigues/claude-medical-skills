@@ -6,7 +6,7 @@ Skills para apoiar médicos na preparação de **rascunhos de prontuário e ates
 
 | Skill | Quando usar | O que faz |
 | --- | --- | --- |
-| [`prontuario`](skills/prontuario.md) | `/prontuário` ou pedido de prontuário, evolução clínica ou registro de consulta | Organiza os dados da consulta em um rascunho no modelo definido, identifica lacunas e permite uma rodada de complementação pelo médico antes de gerar o documento. |
+| [`prontuario`](skills/prontuario.md) | `/prontuario` ou pedido de prontuário, evolução clínica ou registro de consulta | Organiza os dados da consulta em um rascunho no modelo definido, identifica lacunas e permite uma rodada de complementação pelo médico antes de gerar o documento. |
 | [`atestado`](skills/atestado.md) | `/atestado` ou pedido de rascunho de atestado ou declaração de afastamento | Prepara um rascunho conforme o modelo da skill, após confirmar os dados e a decisão clínica. Calcula o período de afastamento e trata o CID-10 conforme a autorização do paciente. |
 
 Consulte cada arquivo para conhecer o fluxo, os dados necessários e o formato de saída:
