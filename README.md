@@ -36,13 +36,9 @@ Com as skills ativadas, você pode solicitá-las explicitamente no chat usando `
 
 Consulte a documentação oficial do Claude sobre [como criar skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) e [como usá-las](https://support.claude.com/en/articles/12512180-use-skills-in-claude) para conferir os passos atuais da interface.
 
-## Distribuição via GitHub Packages
+## Distribuição
 
-O repositório está configurado para distribuir os arquivos Markdown das skills no GitHub Packages como pacote npm. Depois da publicação, baixe-o com:
-
-```sh
-npm pack @joselino-rodrigues/claude-medicas-skills
-```
+O repositório está configurado para distribuir os arquivos Markdown das skills
 
 Esse pacote contém os arquivos-fonte das skills; para enviá-las à conta Claude, use os ZIPs individuais disponíveis na [release mais recente](https://github.com/joselino-rodrigues/claude-medicas-skills/releases/latest).
 
