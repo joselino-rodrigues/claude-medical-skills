@@ -87,7 +87,7 @@ claude-medical-skills/
 
 ## Contribuições
 
-Contribuições são bem-vindas. Consulte [Como contribuir](CONTRIBUTING.md), use o modelo de [proposta de nova skill](https://github.com/joselino-rodrigues/claude-medical-skills/issues/new?template=skill-proposal.md) e acompanhe o [milestone v1.2](https://github.com/joselino-rodrigues/claude-medical-skills/milestone/1). As propostas em avaliação incluem encaminhamento médico, declaração de comparecimento e relatório médico administrativo; a prioridade e o escopo da versão 1.2 serão definidos após discussão e revisão. Não envie dados reais ou identificáveis de pacientes.
+Contribuições são bem-vindas. Consulte [Como contribuir](CONTRIBUTING.md), use o [modelo de proposta de nova skill](https://github.com/joselino-rodrigues/claude-medical-skills/issues/new?template=skill-proposal.md) e acompanhe o [milestone v1.2](https://github.com/joselino-rodrigues/claude-medical-skills/milestone/1). As propostas em avaliação incluem encaminhamento médico, declaração de comparecimento e relatório médico administrativo; a prioridade e o escopo da versão 1.2 serão definidos após discussão e revisão. Não envie dados reais ou identificáveis de pacientes.
 
 ## Licença
 
