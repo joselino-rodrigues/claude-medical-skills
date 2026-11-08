@@ -14,6 +14,28 @@ Consulte cada arquivo para conhecer o fluxo, os dados necessários e o formato d
 - [Prontuário](skills/prontuario.md)
 - [Atestado](skills/atestado.md)
 
+## Instalação no Claude
+
+As skills devem ser instaladas na conta Claude de cada usuário. É necessário habilitar **Code execution and file creation** (ou **Create and edit files**, conforme a interface) em **Settings > Capabilities**. Depois, prepare um ZIP separado para cada skill:
+
+```text
+prontuario.zip
+└── prontuario/
+    └── skill.md
+```
+
+```text
+atestado.zip
+└── atestado/
+    └── skill.md
+```
+
+Use o conteúdo do arquivo correspondente em `skills/` como `skill.md`. O ZIP deve conter a pasta da skill na raiz, e não apenas o arquivo solto. Em seguida, acesse [Customize > Skills](https://claude.ai/customize/skills), escolha **+ Create skill > Upload a skill**, envie cada ZIP e ative as skills na lista. A disponibilidade pode variar conforme o plano e as configurações da organização.
+
+Com as skills ativadas, você pode solicitá-las explicitamente no chat usando `/prontuário` para gerar um rascunho de prontuário ou `/atestado` para um rascunho de atestado. Também é possível descrever a tarefa em linguagem natural; Claude pode selecionar uma skill ativada quando considerar que ela se aplica.
+
+Consulte a documentação oficial do Claude sobre [como criar skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) e [como usá-las](https://support.claude.com/en/articles/12512180-use-skills-in-claude) para conferir os passos atuais da interface.
+
 ## Configuração do atestado
 
 Antes de usar a skill `atestado`, cada médico deve substituir no arquivo os campos de configuração pelo próprio nome, CRM, UF e cidade/UF padrão. Não use dados profissionais de outra pessoa nem invente identificadores; campos ausentes devem permanecer como `[PREENCHER]` e ser sinalizados para conferência.
