@@ -1,77 +1,38 @@
 # Claude Médicas Skills
 
-Repositório de skills e instruções especializadas para uso de IA em contextos médicos, com foco em suporte clínico, organização de dados de saúde, revisão de literatura, análise de prontuários e automação de processos assistenciais.
+Skills para apoiar médicos na preparação de **rascunhos de prontuário e atestado médico** a partir das informações fornecidas pelo profissional. O repositório atualmente contém duas skills; não é uma ferramenta de diagnóstico nem um sistema de emissão automática de documentos.
 
-Este projeto tem como objetivo centralizar recursos, padrões e prompts orientados à medicina, sempre com atenção a rigor técnico, ética profissional, segurança de dados e responsabilidade clínica.
+## Skills disponíveis
 
-## Objetivo
+| Skill | Quando usar | O que faz |
+| --- | --- | --- |
+| [`prontuario`](skills/prontuario.md) | `/prontuário` ou pedido de prontuário, evolução clínica ou registro de consulta | Organiza os dados da consulta em um rascunho no modelo definido, identifica lacunas e permite uma rodada de complementação pelo médico antes de gerar o documento. |
+| [`atestado`](skills/atestado.md) | `/atestado` ou pedido de rascunho de atestado ou declaração de afastamento | Prepara um rascunho conforme o modelo da skill, após confirmar os dados e a decisão clínica. Calcula o período de afastamento e trata o CID-10 conforme a autorização do paciente. |
 
-O repositório foi pensado para apoiar profissionais de saúde, equipes de pesquisa e sistemas de assistência clínica com:
+Consulte cada arquivo para conhecer o fluxo, os dados necessários e o formato de saída:
 
-- Análise de casos clínicos e sintomas
-- Organização de informações de prontuário
-- Resumo de literatura e evidências científicas
-- Apoio à documentação médica e comunicação profissional
-- Automação de tarefas administrativas e de fluxo assistencial
-- Estruturação de prompts e regras para uso responsável de IA em saúde
+- [Prontuário](skills/prontuario.md)
+- [Atestado](skills/atestado.md)
 
-## Uso restrito e responsabilidade profissional
+## Configuração do atestado
 
-As skills deste repositório devem ser usadas exclusivamente por profissionais médicos e de saúde legalmente habilitados. Elas não são destinadas a leigos, pacientes, estudantes sem supervisão ou qualquer pessoa sem formação profissional adequada.
+Antes de usar a skill `atestado`, cada médico deve substituir no arquivo os campos de configuração pelo próprio nome, CRM, UF e cidade/UF padrão. Não use dados profissionais de outra pessoa nem invente identificadores; campos ausentes devem permanecer como `[PREENCHER]` e ser sinalizados para conferência.
 
-Todo conteúdo gerado, recomendação, resumo ou inferência deve ser conferido, validado e ajustado por um profissional responsável antes de ser usado em qualquer contexto clínico, acadêmico, administrativo ou de decisão de cuidado ao paciente.
+## Uso responsável
 
-## Princípios
+As skills destinam-se exclusivamente ao médico responsável pelo atendimento ou pela emissão do documento. O conteúdo gerado é sempre um **rascunho**: deve ser revisado, corrigido e validado pelo médico, que é responsável por decidir o que será registrado e por assinar o documento antes de incorporá-lo ao prontuário ou entregá-lo.
 
-- Segurança do paciente em primeiro lugar
-- Uso da IA como ferramenta de apoio, nunca como substituta do julgamento clínico
-- Validação por profissionais habilitados antes de qualquer decisão clínica
-- Proteção de dados sensíveis e conformidade com boas práticas de privacidade
-- Transparência em fontes, limitações e incertezas dos dados
+As instruções das skills exigem, entre outros cuidados:
 
-## Áreas de cobertura
+- Não inventar ou inferir dados clínicos, resultados, tratamentos, decisões médicas ou identificadores profissionais ausentes.
+- Distinguir informações relatadas, achados observados e sugestões da IA; registrar lacunas e trechos incertos para revisão.
+- Não apresentar hipótese diagnóstica, CID-10 ou sugestão terapêutica como decisão confirmada do médico.
+- No atestado, incluir o CID-10 somente após confirmação de que o paciente autorizou e assinou a divulgação; nunca simular a autorização ou assinatura.
+- Usar dados pessoais estritamente necessários e observar as regras de privacidade aplicáveis. Evite inserir informações identificáveis desnecessárias.
 
-### Atenção clínica
-- avaliação inicial de sinais e sintomas
-- diferenciais diagnósticos
-- apoio à tomada de decisão clínica com critério
-- revisão de histórico e evolução do paciente
+O material não substitui avaliação clínica, protocolos locais, normas vigentes nem o julgamento e a responsabilidade do médico. Em situações urgentes, a avaliação clínica deve ser priorizada; a documentação não deve atrasá-la.
 
-### Documentação e prontuário
-- organização de informações clínicas
-- estruturação de anotações e resumos
-- apoio à comunicação entre profissionais de saúde
-
-### Pesquisa e evidência
-- busca orientada por temas médicos
-- identificação de estudos relevantes
-- resumo de achados em linguagem clara e técnica
-
-### Operação em saúde
-- padronização de processos
-- automação de fluxo administrativo
-- organização de listas, triagens e rotina assistencial
-
-## Uso recomendado
-
-As skills deste repositório devem ser usadas como base para prompts, workflows e regras de operação. Elas ajudam a orientar a IA para respostas mais estruturadas, mais confiáveis e mais alinhadas ao contexto clínico.
-
-Exemplos de uso:
-
-- suporte à elaboração de notas clínicas
-- revisão de relatórios médicos
-- organização de informações para discussão de casos
-- construção de fluxos para triagem e atendimento
-
-## Boas práticas
-
-- Sempre confirme informações sensíveis antes de processar dados de pacientes
-- Exija referências e evidências quando a resposta envolver recomendações clínicas
-- Evite conclusões definitivas sem contexto suficiente
-- Mantenha a supervisão humana em todas as etapas críticas
-- Considere riscos, contraindicações e contexto individual do paciente
-
-## Estrutura do repositório
+## Estrutura
 
 ```text
 claude-medicas-skills/
@@ -82,28 +43,10 @@ claude-medicas-skills/
     └── prontuario.md
 ```
 
-## Contribuição
+## Contribuições
 
-Contribuições são bem-vindas. Sugestões, melhorias de prompts, novos módulos de especialidade e ajustes de segurança são valiosos para evoluir o repositório.
-
-Antes de contribuir, considere:
-
-- manter o foco em uso médico responsável
-- documentar claramente a finalidade da skill ou módulo
-- priorizar rigor técnico e segurança
-- evitar conteúdo que substitua a avaliação profissional
+Contribuições são bem-vindas. Ao propor uma nova skill ou alteração, documente sua finalidade, os dados necessários, os limites de uso e as etapas de revisão profissional. Priorize segurança do paciente, privacidade, clareza sobre incertezas e supervisão médica.
 
 ## Licença
 
 Este projeto está sob a licença definida em [LICENSE](LICENSE).
-
-## Observação importante
-
-Este repositório tem caráter de suporte à prática médica e acadêmica. Ele não substitui:
-
-- julgamento clínico profissional
-- orientação de especialistas
-- protocolos locais e regulamentações vigentes
-- atendimento presencial ou avaliação direta do paciente
-
-Se você usar este material em prática profissional, ele deve ser integrado a boas práticas clínicas, supervisão adequada e responsabilidade ética.
