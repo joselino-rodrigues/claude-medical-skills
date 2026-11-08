@@ -52,7 +52,7 @@ Depois de instalar cada skill, edite seu conteúdo na conta Claude e preencha a 
 
 O repositório está configurado para distribuir os arquivos Markdown das skills
 
-Esse pacote contém os arquivos-fonte das skills; para enviá-las à conta Claude, use os ZIPs individuais disponíveis na [release mais recente](https://github.com/joselino-rodrigues/claude-medicas-skills/releases/latest).
+Esse pacote contém os arquivos-fonte das skills; para enviá-las à conta Claude, use os ZIPs individuais disponíveis na [release mais recente](https://github.com/joselino-rodrigues/claude-medical-skills/releases/latest).
 
 ## Uso responsável
 
@@ -71,7 +71,7 @@ O material não substitui avaliação clínica, protocolos locais, normas vigent
 ## Estrutura
 
 ```text
-claude-medicas-skills/
+claude-medical-skills/
 ├── LICENSE
 ├── README.md
 └── skills/
