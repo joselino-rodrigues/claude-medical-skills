@@ -31,7 +31,7 @@ Telefone ou contato institucional, se desejar: [PREENCHER]
 Regras para usar a configuração:
 
 - Use automaticamente os dados preenchidos no cabeçalho e na identificação/assinatura do profissional; não peça esses dados novamente a cada relatório.
-- Preserve `[PREENCHER]` para qualquer campo ainda não configurado. Não invente nomes, registros, endereços, contatos ou especialidades.
+- Preserve `[PREENCHER]` para qualquer campo ainda não configurado. Não invente nomes, registros, endereços, contatos ou especialidades. Faça apenas com seus dados reais pessoais e intransferíveis.
 - A instituição configurada é o cabeçalho padrão, mas não prova onde ocorreu uma internação específica. Se o local informado para o caso divergir, use o local do caso e sinalize eventual conflito.
 - Se a skill for usada em outro local ou por outro profissional, o médico deve editar a configuração ou informar a exceção para aquele relatório.
 - Não inclua contato institucional se estiver vazio ou não for desejado.
@@ -88,62 +88,48 @@ Gere o relatório depois da complementação ou quando o médico solicitar expli
 
 Comece com o cabeçalho institucional configurado, omitindo campos vazios, e em seguida o título. Use as seções abaixo, omitindo as que não se aplicarem:
 
-**Cabeçalho da instituição**
-
+**Cabeçalho da instituição**  
 Nome da instituição/clínica, unidade ou setor padrão, endereço, cidade/UF e contato institucional conforme a configuração permanente. Se o caso indicar outro local, use o local informado para o caso.
 
 **RELATÓRIO DE ALTA MÉDICA**
 
-**Identificação do paciente**
-
+**Identificação do paciente**  
 Nome ou identificador, data de nascimento e número do prontuário.
 
-**Dados da internação**
-
+**Dados da internação**  
 Instituição/setor, data e hora de admissão, data e hora da alta e serviço responsável.
 
-**Motivo da internação ou atendimento**
-
+**Motivo da internação ou atendimento**  
 Queixa ou motivo conforme registrado.
 
-**Diagnósticos**
-
+**Diagnósticos**  
 Diagnósticos de admissão e de alta, diferenciando os confirmados das hipóteses ainda não confirmadas. CID-10 somente se informado e confirmado.
 
-**Antecedentes e alergias relevantes**
-
+**Antecedentes e alergias relevantes**  
 Somente os dados fornecidos. Destaque alergias medicamentosas informadas.
 
-**Resumo da evolução clínica**
-
+**Resumo da evolução clínica**  
 Síntese cronológica do quadro, achados relevantes, tratamentos realizados e resposta documentada.
 
-**Exames, procedimentos e interconsultas**
-
+**Exames, procedimentos e interconsultas**  
 Registre os realizados e resultados fornecidos. Não complete resultados ausentes.
 
-**Condição no momento da alta**
-
+**Condição no momento da alta**  
 Estado clínico e achados documentados pelo profissional. Se não informado, escreva “não informado”.
 
-**Medicações na alta**
-
+**Medicações na alta**  
 Liste somente as prescrições confirmadas, com nome, dose, via e posologia conforme fornecidos. Se não houver informação, escreva “não informado; confirmar com o médico responsável”.
 
-**Plano e orientações de alta**
-
+**Plano e orientações de alta**  
 Cuidados, restrições, seguimento, consultas agendadas e sinais de alerta/retorno, somente quando definidos pela equipe.
 
-**Pendências e itens para conferência**
-
+**Pendências e itens para conferência**  
 Campos ausentes, inconsistências, resultados pendentes e informações que precisam de confirmação.
 
-**Identificação e assinatura do profissional responsável**
-
+**Identificação e assinatura do profissional responsável**  
 Use os dados permanentes configurados para o profissional. Use a cidade/UF configurada como local padrão do documento, salvo indicação diferente para o caso. Acrescente a data quando fornecida; mantenha `[PREENCHER]` nos campos ainda não configurados e deixe espaço para assinatura.
 
-**Aviso**
-
+**Aviso**  
 “Rascunho gerado por IA com base nas informações fornecidas. Deve ser revisado, corrigido e validado pelo médico responsável antes de integrar o prontuário ou ser entregue ao paciente.”
 
 ## Formato da resposta
