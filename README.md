@@ -1,4 +1,4 @@
-# Claude Médicas Skills
+# Claude Medical Skills
 
 Skills para apoiar médicos na preparação de **rascunhos de prontuário, atestado médico e relatório de alta** a partir das informações fornecidas pelo profissional. O repositório atualmente contém três skills; não é uma ferramenta de diagnóstico nem um sistema de emissão automática de documentos.
 
