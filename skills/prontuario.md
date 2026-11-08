@@ -9,20 +9,39 @@ description: Use quando o médico digitar /prontuário seguido de dados de um pa
 
 Produz um rascunho de registro de consulta no modelo do médico, para ser lido, editado e assinado por ele. A skill organiza o que foi dito e observado. Não decide conduta e não completa o que não foi registrado. Hipóteses e diferenciais são sugestões para avaliação médica.
 
+## Configuração permanente após a instalação
+
+Após instalar a skill, o médico pode editar este arquivo e substituir os campos abaixo pelos próprios dados. Esses valores serão reutilizados nos prontuários, sem que precisem ser informados a cada uso.
+
+```text
+IDENTIFICAÇÃO DO PROFISSIONAL
+Nome completo: [PREENCHER]
+Profissão/especialidade: [PREENCHER]
+Registro profissional e UF (CRM/UF ou equivalente): [PREENCHER]
+RQE, se aplicável: [PREENCHER]
+
+CABEÇALHO DO LOCAL DE ATENDIMENTO
+Nome da instituição/clínica: [PREENCHER]
+Unidade/setor padrão, se aplicável: [PREENCHER]
+Endereço: [PREENCHER]
+Cidade/UF: [PREENCHER]
+Telefone ou contato institucional, se desejar: [PREENCHER]
+```
+
+Regras para usar a configuração:
+
+- Use automaticamente os dados preenchidos no cabeçalho e na identificação/assinatura do profissional; não peça esses dados novamente a cada prontuário.
+- Preserve `[PREENCHER]` para qualquer campo ainda não configurado. Não invente nomes, registros, endereços, contatos ou especialidades.
+- O local configurado é o padrão do cabeçalho. Se a consulta tiver ocorrido em outro local e isso for informado, use o local do caso e sinalize eventual conflito.
+- Se a skill for usada em outro local ou por outro profissional, o médico deve editar a configuração ou informar a exceção para aquele prontuário.
+- Não inclua contato institucional se estiver vazio ou não for desejado.
+
 ## Quando usar
 
 - O médico digita `/prontuário` com dados ou transcrição da consulta.
 - O médico pede prontuário, evolução clínica ou registro de consulta.
 
 Não use para atestado (há skill própria), receita ou laudo.
-
-## Dados fixos do médico
-
-- Nome: Dr. Joselino Rodrigues de Souza Junior
-- CRM: 27323/BA
-- Cidade padrão: Conceição do Jacuípe/BA
-
-Nunca invente CRM ou outro identificador. Se faltar algum dado, mantenha `[PREENCHER]` e avise.
 
 ## Fluxo
 
@@ -36,7 +55,7 @@ Analise a entrada e identifique lacunas nestes campos:
 4. Diagnóstico: hipótese principal, exames realizados ou solicitados.
 5. Conduta: medicações com dose e posologia, repouso, exames, encaminhamentos, retorno.
 6. Sinais de alarme: se a transcrição sugere algo grave, confirme se foi avaliado.
-7. Local, data da consulta e cidade.
+7. Local e data da consulta. Use o local configurado como padrão somente se nenhum local específico tiver sido informado.
 
 Não gere o prontuário nesta etapa.
 
@@ -49,7 +68,7 @@ Apresente as lacunas em lista curta, agrupada por seção, e pergunte:
 Regras:
 - Uma única rodada. Não interrogue campo a campo.
 - Priorize o que muda conduta ou hipótese: sinais vitais, exame físico, sinais de alarme, alergias, medicações, conduta decidida.
-- Lacunas administrativas (número do prontuário, cidade) entram na lista, mas não bloqueiam a geração.
+- Lacunas administrativas (como número do prontuário) entram na lista, mas não bloqueiam a geração. Não pergunte a cidade se ela já estiver configurada e não houver indicação de outro local para a consulta.
 - Não pergunte o que já está claro na entrada.
 
 ### Etapa 3: geração
@@ -68,7 +87,10 @@ Gere quando o médico complementar ou pedir para gerar. Se ele enviar mais dados
 
 ## Estrutura de saída
 
-Use esta ordem e estes títulos:
+Comece com o cabeçalho institucional configurado, omitindo campos vazios, e em seguida use esta ordem e estes títulos:
+
+**Cabeçalho do local de atendimento**
+Nome da instituição/clínica, unidade ou setor, endereço, cidade/UF e contato institucional conforme a configuração. Se o caso indicar outro local, use o local informado para a consulta.
 
 **Dados do Paciente**
 Nome completo, data de nascimento (DD/MM/AAAA) e número do prontuário.
@@ -93,11 +115,11 @@ Conduta registrada: medicações com nome, dose, via e posologia; repouso; exame
 "Este prontuário foi preenchido em [DD/MM/AAAA]."
 
 **Fechamento**
-[Cidade], [Data da consulta ou da assinatura]
+[Cidade/UF configurada ou local específico da consulta], [Data da consulta ou da assinatura]
 
 ________________________
 Assinatura do Profissional de Saúde
-Dr. Joselino Rodrigues de Souza Junior – CRM 27323/BA
+[Nome do profissional configurado] – [Registro profissional/UF]
 
 ## Busca de CID-10
 

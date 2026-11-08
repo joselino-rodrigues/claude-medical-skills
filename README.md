@@ -1,6 +1,6 @@
 # Claude Médicas Skills
 
-Skills para apoiar médicos na preparação de **rascunhos de prontuário e atestado médico** a partir das informações fornecidas pelo profissional. O repositório atualmente contém duas skills; não é uma ferramenta de diagnóstico nem um sistema de emissão automática de documentos.
+Skills para apoiar médicos na preparação de **rascunhos de prontuário, atestado médico e relatório de alta** a partir das informações fornecidas pelo profissional. O repositório atualmente contém três skills; não é uma ferramenta de diagnóstico nem um sistema de emissão automática de documentos.
 
 ## Skills disponíveis
 
@@ -8,11 +8,13 @@ Skills para apoiar médicos na preparação de **rascunhos de prontuário e ates
 | --- | --- | --- |
 | [`prontuario`](skills/prontuario.md) | `/prontuario` ou pedido de prontuário, evolução clínica ou registro de consulta | Organiza os dados da consulta em um rascunho no modelo definido, identifica lacunas e permite uma rodada de complementação pelo médico antes de gerar o documento. |
 | [`atestado`](skills/atestado.md) | `/atestado` ou pedido de rascunho de atestado ou declaração de afastamento | Prepara um rascunho conforme o modelo da skill, após confirmar os dados e a decisão clínica. Calcula o período de afastamento e trata o CID-10 conforme a autorização do paciente. |
+| [`alta`](skills/alta.md) | `/alta` ou pedido de relatório de alta médica | Organiza dados da internação em um rascunho de relatório de alta, sinalizando lacunas e sem decidir a alta ou definir tratamento. |
 
 Consulte cada arquivo para conhecer o fluxo, os dados necessários e o formato de saída:
 
 - [Prontuário](skills/prontuario.md)
 - [Atestado](skills/atestado.md)
+- [Relatório de alta médica](skills/alta.md)
 
 ## Instalação no Claude
 
@@ -30,21 +32,27 @@ atestado.zip
     └── skill.md
 ```
 
+```text
+alta.zip
+└── alta/
+    └── skill.md
+```
+
 Use o conteúdo do arquivo correspondente em `skills/` como `skill.md`. O ZIP contém a pasta da skill na raiz, e não apenas o arquivo solto. Em seguida, acesse [Customize > Skills](https://claude.ai/customize/skills), escolha **+ Create skill > Upload a skill**, envie cada MD e ative as skills na lista. A disponibilidade pode variar conforme o plano e as configurações da organização.
 
-Com as skills ativadas, você pode solicitá-las explicitamente no chat usando `/prontuário` para gerar um rascunho de prontuário ou `/atestado` para um rascunho de atestado. Também é possível descrever a tarefa em linguagem natural; Claude pode selecionar uma skill ativada quando considerar que ela se aplica.
+Com as skills ativadas, você pode solicitá-las explicitamente no chat usando `/prontuário`, `/atestado` ou `/alta` para gerar o respectivo rascunho. Também é possível descrever a tarefa em linguagem natural; Claude pode selecionar uma skill ativada quando considerar que ela se aplica.
 
 Consulte a documentação oficial do Claude sobre [como criar skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) e [como usá-las](https://support.claude.com/en/articles/12512180-use-skills-in-claude) para conferir os passos atuais da interface.
+
+## Configuração das skills
+
+Depois de instalar cada skill, edite seu conteúdo na conta Claude e preencha a seção **Configuração permanente após a instalação** com os dados do profissional e do local de atendimento. As skills reutilizam esses dados no cabeçalho e na identificação do profissional, sem solicitá-los a cada documento. Campos não preenchidos permanecem como `[PREENCHER]`; revise a configuração se mudar de local ou profissional. Não use dados profissionais de outra pessoa nem invente identificadores.
 
 ## Distribuição
 
 O repositório está configurado para distribuir os arquivos Markdown das skills
 
 Esse pacote contém os arquivos-fonte das skills; para enviá-las à conta Claude, use os ZIPs individuais disponíveis na [release mais recente](https://github.com/joselino-rodrigues/claude-medicas-skills/releases/latest).
-
-## Configuração do atestado
-
-Antes de usar a skill `atestado`, cada médico deve substituir no arquivo os campos de configuração pelo próprio nome, CRM, UF e cidade/UF padrão. Não use dados profissionais de outra pessoa nem invente identificadores; campos ausentes devem permanecer como `[PREENCHER]` e ser sinalizados para conferência.
 
 ## Uso responsável
 
@@ -67,6 +75,7 @@ claude-medicas-skills/
 ├── LICENSE
 ├── README.md
 └── skills/
+    ├── alta.md
     ├── atestado.md
     └── prontuario.md
 ```

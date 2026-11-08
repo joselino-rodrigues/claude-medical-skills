@@ -9,20 +9,41 @@ description: Use quando o médico digitar /atestado seguido dos dados de um paci
 
 Gera o texto do atestado no modelo fixo do médico, pronto para impressão ou para colar no prontuário. O documento só tem validade depois de revisado e assinado pelo médico emitente. A skill não decide diagnóstico, não escolhe CID sem fonte e não altera a redação do modelo.
 
+## Configuração permanente após a instalação
+
+Após instalar a skill, o médico pode editar este arquivo e substituir os campos abaixo pelos próprios dados. Esses valores serão reutilizados nos atestados, sem que precisem ser informados a cada uso.
+
+```text
+IDENTIFICAÇÃO DO PROFISSIONAL
+Nome completo: [PREENCHER]
+Profissão/especialidade: [PREENCHER]
+CRM: [PREENCHER]
+UF do CRM: [PREENCHER]
+RQE, se aplicável: [PREENCHER]
+
+CABEÇALHO DO LOCAL DE ATENDIMENTO
+Nome da instituição/clínica: [PREENCHER]
+Unidade/setor padrão, se aplicável: [PREENCHER]
+Endereço: [PREENCHER]
+Cidade: [PREENCHER]
+UF: [PREENCHER]
+Telefone ou contato institucional, se desejar: [PREENCHER]
+```
+
+Regras para usar a configuração:
+
+- Use automaticamente os dados preenchidos no cabeçalho, no local e na identificação do médico; não peça esses dados novamente a cada atestado.
+- Preserve `[PREENCHER]` para qualquer campo ainda não configurado. Não invente nomes, registros, endereços, contatos ou especialidades.
+- O local configurado é o padrão do cabeçalho. Se a consulta tiver ocorrido em outro local e isso for informado, use o local do caso e sinalize eventual conflito.
+- Se a skill for usada em outro local ou por outro profissional, o médico deve editar a configuração ou informar a exceção para aquele atestado.
+- Não inclua contato institucional se estiver vazio ou não for desejado.
+
 ## Quando usar
 
 - O médico digita `/atestado` com os dados do paciente.
 - O médico pede atestado, declaração de afastamento ou de repouso com esses dados.
 
 Não use quando o pedido for prontuário, evolução ou receita (há skills próprias para isso).
-
-## Dados fixos do médico
-
-- Nome: Dr. Joselino Rodrigues de Souza Junior
-- CRM: 27323/BA
-- Cidade padrão: Conceição do Jacuípe/BA
-
-Nunca invente CRM, RQE ou outro identificador. Se algum dado faltar no cadastro, mantenha `[PREENCHER]` e avise.
 
 ## Entrada
 
@@ -96,7 +117,9 @@ Preenchimento dos campos:
 - `{DIA_OU_DIAS}`: "dia" quando o número for 1; "dias" nos demais casos.
 - `{DATA_EMISSAO_EXTENSO}`: por extenso, por exemplo "27 de março de 2026". Use a data da consulta, salvo indicação diferente do médico.
 - `{CID}`: código ou códigos. Se o paciente pedir sigilo do CID, remova a linha inteira, depois de confirmar com o médico.
-- Linhas de identificação antes do título: inclua `Paciente: {NOME}` e `Data de nascimento: {DATA_NASC}`. A frase "o paciente acima identificado" depende dessas linhas. Se o médico preferir não usá-las, a frase precisa ser ajustada por ele.
+- Antes do título, inclua o cabeçalho institucional configurado, omitindo campos vazios, seguido de `Paciente: {NOME}` e `Data de nascimento: {DATA_NASC}`. A frase "o paciente acima identificado" depende das linhas do paciente. Se o caso indicar outro local, use o local informado para a consulta.
+- `{CIDADE}` e `{UF_CIDADE}` usam a cidade/UF configurada, salvo indicação de outro local para o caso.
+- `{NOME_MEDICO}`, `{CRM}` e `{UF}` usam os dados profissionais configurados. Campos não configurados permanecem como `[PREENCHER]`.
 
 ## Alertas (fora do texto do atestado)
 
@@ -121,6 +144,10 @@ Nada além disso. Sem introdução, sem conclusão, sem explicar o processo.
 **Saída:**
 
 ```
+[PREENCHER]
+[PREENCHER]
+[PREENCHER]/[PREENCHER]
+
 Paciente: Maria Souza
 Data de nascimento: 14/02/1990
 
@@ -137,13 +164,13 @@ ORIENTAÇÕES ADICIONAIS:
 
 Atesto a veracidade das informações acima, estando este documento assinado digitalmente conforme as normas vigentes.
 
-Local e Data: Conceição do Jacuípe/BA, 27 de março de 2026
+Local e Data: [PREENCHER]/[PREENCHER], 27 de março de 2026
 
-Médico Responsável: Dr. Joselino Rodrigues de Souza Junior
-CRM 27323/BA
+Médico Responsável: [PREENCHER]
+CRM [PREENCHER]/[PREENCHER]
 ```
 
-**Conferência:** período 27/03/2026 a 29/03/2026 (3 dias, contagem inclusiva). CID J01 informado pelo médico. Pendentes: nenhum. Alerta: a frase de assinatura digital exige certificado ICP-Brasil; se a assinatura for manuscrita, ajuste a frase.
+**Conferência:** período 27/03/2026 a 29/03/2026 (3 dias, contagem inclusiva). CID J01 informado pelo médico. Pendentes: preencher os campos de configuração ainda não definidos. Alerta: a frase de assinatura digital exige certificado ICP-Brasil; se a assinatura for manuscrita, ajuste a frase.
 
 ## Erros comuns
 
